@@ -1,10 +1,7 @@
 package dao;
+import dao.EmployeeDAO;
 
-public class EmployeeDAOJDBCImpl {
+public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

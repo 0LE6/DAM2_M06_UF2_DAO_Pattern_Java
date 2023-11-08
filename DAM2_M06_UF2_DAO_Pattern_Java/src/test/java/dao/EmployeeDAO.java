@@ -1,10 +1,6 @@
 package dao;
 
-public class EmployeeDAO {
+public interface EmployeeDAO {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 }

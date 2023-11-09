@@ -7,12 +7,12 @@ public class Employee {
 	private int id;
 	private String firstName; // can be null
 	private String lastName;
-	private String birthday;
+	private Date birthday;
 	private float salary;
 	
 	public Employee() {}
 	
-	public Employee(int id, String firstName, String lastName, String birthday, float salary) {
+	public Employee(int id, String firstName, String lastName, Date birthday, float salary) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;

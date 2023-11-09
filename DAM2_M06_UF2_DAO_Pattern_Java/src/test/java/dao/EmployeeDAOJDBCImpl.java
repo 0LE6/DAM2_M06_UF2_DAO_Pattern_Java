@@ -9,7 +9,7 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 	String pass = "";
 	CallableStatement cS = null;
 	
-	Connection con = DriverManager.getConnection(connectionUrl, user, pass);
+	Connection con;
 	
 	@Override
 	public void add(Employee empl) {

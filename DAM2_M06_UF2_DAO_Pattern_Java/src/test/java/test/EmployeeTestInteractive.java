@@ -17,7 +17,13 @@ public class EmployeeTestInteractive {
 		EmployeeDAO dao = factory.createEmployeeDAO();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String dateString = "2023-11-09";
-		Date d = sdf.parse(dateString);
+		Date d = null;
+		try {
+			d = sdf.parse(dateString);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Employee e = new Employee(69, "OLEG", "KHARENKO", d, 2000f);
 		dao.add(e);
 

@@ -4,9 +4,9 @@ import model.Employee;
 
 public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 
-	String connectionUrl = "jdbc:mysql://localhost:3306/hospital?serverTimezone=UTC";
-	String user = "root"; 
-	String pass = "";
+	static final String CONNECTION_URL = "jdbc:mysql://localhost:3306/hospital?serverTimezone=UTC";
+	static final String USER = "root"; 
+	static final String PASS = "";
 	CallableStatement cS = null;
 	
 	Connection con;

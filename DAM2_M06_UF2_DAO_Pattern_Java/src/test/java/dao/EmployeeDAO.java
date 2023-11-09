@@ -2,7 +2,7 @@ package dao;
 
 import model.Employee;
 
-public interface EmployeeDAO {
+public interface EmployeeDAO extends AutoCloseable {
 
 	public void add(Employee empl);
 	public void update(Employee empl);

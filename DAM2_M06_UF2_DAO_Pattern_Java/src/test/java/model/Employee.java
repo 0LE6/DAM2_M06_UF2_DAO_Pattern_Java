@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Employee {
 
+	private int id;
 	private String firstName; // can be null
 	private String lastName;
 	private String birthday;
@@ -11,15 +12,14 @@ public class Employee {
 	
 	public Employee() {}
 	
-	private int id;
 	public Employee(int id, String firstName, String lastName, String birthday, float salary) {
-		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthday = birthday;
 		this.salary = salary;
 	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -50,6 +50,7 @@ public class Employee {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	@Override
 	public String toString() {
 		return "Employee [firstName=" + firstName + 

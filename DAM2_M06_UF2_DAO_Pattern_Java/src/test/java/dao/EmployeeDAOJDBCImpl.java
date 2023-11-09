@@ -45,8 +45,8 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 	public void close() {
 		try {
 			con.close();
-		} catch (SQLException se) {
-			System.out.println("Exception closing Connection: " + se);
+		} catch (SQLException e) {
+			System.out.println("Exception closing Connection: " + e);
 		}
 	}
 

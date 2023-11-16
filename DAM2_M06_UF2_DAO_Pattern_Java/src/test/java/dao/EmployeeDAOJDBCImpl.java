@@ -82,13 +82,15 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 						int name = resultSet.getInt("FIRSTNAME");
 			            String lastName = resultSet.getString("LASTNAME");
 			            Date birthDate= resultSet.getDate("BIRTHDATE");
-			            double salary = resultSet.getDouble("SALARY");
-			            System.out.println("ID: " + id + 
-			            		" | NAME: " + lastName + 
-			            		" | LASTNAME: " + name + 
-			            		" | BIRTDATE: " + birthDate +
-			            		" | SALARY: " + salary
-			            		);
+			            float salary = resultSet.getFloat("SALARY");
+//			            System.out.println("ID: " + id + 
+//			            		" | NAME: " + lastName + 
+//			            		" | LASTNAME: " + name + 
+//			            		" | BIRTDATE: " + birthDate +
+//			            		" | SALARY: " + salary
+//			            		);
+			            Employee e = new Employee(id,name,lastName,birthDate,salary);
+			            employeesArray.add(e);
 					}
 					
 				}

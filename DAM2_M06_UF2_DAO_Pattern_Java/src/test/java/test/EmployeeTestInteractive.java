@@ -24,7 +24,7 @@ public class EmployeeTestInteractive {
 		java.util.Date utilDate = sdf.parse(dateString);
         Date sqlDate = new Date(utilDate.getTime());
         
-		Employee e = new Employee(69, "OLEG", "KHARENKO", sqlDate, 42069f);
+		Employee e = new Employee(70, "OLEG", "KHARENKO", sqlDate, 42069f);
 		dao.add(e);
 		
 		Employee[] allEmps = dao.getAllEmployees();

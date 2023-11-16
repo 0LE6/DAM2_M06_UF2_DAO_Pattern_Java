@@ -21,15 +21,23 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 					+ "ID, "
 					+ "FIRSTNAME,"
 					+ "LASTNAME, "
-					+ "BIRTHDAY,"
+					+ "BIRTHDATE,"
 					+ "SALARY)"
 					+ "VALUES (?, ?, ?, ?, ?)";
 			PreparedStatement pS = con.prepareStatement(sSQL);
 			pS.setInt(1, empl.getId());
 			pS.setString(2, empl.getFirstName());
 			pS.setString(3, empl.getLastName());
-			pS.setDate(4, (Date) empl.getBirthday());
+			
+			// Convert from 
+			java.sql.Date sqlDate = 
+					new java.sql.Date(empl.getBirthday().getTime());
+
+			pS.setDate(4, sqlDate);
 			pS.setFloat(5, empl.getSalary());
+			
+			// After charge all the data of the Employee execute it
+			pS.executeUpdate();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -53,8 +61,52 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 	}
 
 	public Employee[] getAllEmployees() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Employee[] employeesArray =  {};
+		
+		try (Connection con = 
+				DriverManager.getConnection(CONNECTION_URL, USER, PASS);){
+			try {
+				String storedProcedureCall = "{call GetAllEmployees}";
+				CallableStatement cS = con.prepareCall(storedProcedureCall);
+				ResultSet resultSet = null;
+				
+				boolean hasResults = cS.execute();
+				
+				// Processing the result if the executing is giving any result:
+				if (hasResults) {
+					resultSet = cS.getResultSet();
+					
+					while (resultSet.next()) {
+						int id = resultSet.getInt("ID");
+						int name = resultSet.getInt("FIRSTNAME");
+			            String lastName = resultSet.getString("LASTNAME");
+			            Date birthDate= resultSet.getDate("BIRTHDATE");
+			            double salary = resultSet.getDouble("SALARY");
+			            System.out.println("ID: " + id + 
+			            		" | NAME: " + lastName + 
+			            		" | LASTNAME: " + name + 
+			            		" | BIRTDATE: " + birthDate +
+			            		" | SALARY: " + salary
+			            		);
+					}
+					
+				}
+				else System.out.println("The stored procedure did not return a ResultSet.");
+				
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return employeesArray;
+		
 	}
 
 	// Implementation of close() method

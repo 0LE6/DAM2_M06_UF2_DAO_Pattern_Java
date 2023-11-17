@@ -25,7 +25,7 @@ public class EmployeeTestInteractive {
         Date sqlDate = new Date(utilDate.getTime());
         
 		Employee e = new Employee(70, "OLEG", "KHARENKO", sqlDate, 42069f);
-		dao.add(e);
+		//dao.add(e);
 		
 		Employee[] allEmps = dao.getAllEmployees();
 		for (Employee employee : allEmps) {

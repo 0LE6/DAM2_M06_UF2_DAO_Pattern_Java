@@ -1,5 +1,9 @@
 package dao;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import model.Employee;
 
 public class EmployeeDAOJDBCImpl implements EmployeeDAO{
@@ -62,7 +66,10 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 
 	public Employee[] getAllEmployees() {
 		
-		Employee[] employeesArray =  {};
+		// I'll use List (ArrayList) and then pass it to Array
+		//Employee[] employeesArray =  new Employee[];
+		List<Employee> employeesList = new ArrayList<Employee>();
+
 		
 		try (Connection con = 
 				DriverManager.getConnection(CONNECTION_URL, USER, PASS);){
@@ -70,7 +77,7 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 				String storedProcedureCall = "{call GetAllEmployees}";
 				CallableStatement cS = con.prepareCall(storedProcedureCall);
 				ResultSet resultSet = null;
-				
+
 				boolean hasResults = cS.execute();
 				
 				// Processing the result if the executing is giving any result:
@@ -79,7 +86,7 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 					
 					while (resultSet.next()) {
 						int id = resultSet.getInt("ID");
-						int name = resultSet.getInt("FIRSTNAME");
+						String name = resultSet.getString("FIRSTNAME");
 			            String lastName = resultSet.getString("LASTNAME");
 			            Date birthDate= resultSet.getDate("BIRTHDATE");
 			            float salary = resultSet.getFloat("SALARY");
@@ -90,7 +97,7 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 //			            		" | SALARY: " + salary
 //			            		);
 			            Employee e = new Employee(id,name,lastName,birthDate,salary);
-			            employeesArray.add(e);
+			            employeesList.add(e);
 					}
 					
 				}
@@ -107,7 +114,10 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return employeesArray;
+		// Convert the list to an array
+	    Employee[] employeesArray = employeesList.toArray(new Employee[employeesList.size()]);
+	    
+	    return employeesArray;
 		
 	}
 

@@ -53,10 +53,10 @@ public class Employee {
 	
 	@Override
 	public String toString() {
-		return "Employee [firstName=" + firstName + 
-				", lastName=" + lastName + ", birthday=" +
-				birthday + ", salary=" + salary + ", id=" + id + "]";
+	    return String.format("Employee [id = %4d | firstName = %-10s | lastName = %-12s | birthday = %-10s | salary = %.2f]",
+	            id, firstName, lastName, birthday, salary);
 	}
+
 	
 		
 	

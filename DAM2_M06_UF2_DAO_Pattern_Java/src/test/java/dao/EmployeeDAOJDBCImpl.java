@@ -29,7 +29,7 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 			pS.setString(2, empl.getFirstName());
 			pS.setString(3, empl.getLastName());
 			
-			// Convert from 
+			// Convert from java date to sql date
 			java.sql.Date sqlDate = 
 					new java.sql.Date(empl.getBirthday().getTime());
 

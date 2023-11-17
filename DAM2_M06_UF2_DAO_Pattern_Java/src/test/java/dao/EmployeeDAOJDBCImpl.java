@@ -15,7 +15,6 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO{
 	
 	Connection con;
 
-
 	public void add(Employee empl) {
 		
 		try (Connection con = 

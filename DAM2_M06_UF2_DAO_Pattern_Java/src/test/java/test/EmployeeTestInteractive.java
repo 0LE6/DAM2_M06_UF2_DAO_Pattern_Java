@@ -18,6 +18,7 @@ public class EmployeeTestInteractive {
 		EmployeeDAOFactory factory = new EmployeeDAOFactory();
 		EmployeeDAO dao = factory.createEmployeeDAO();
 		
+		// Part #1 - Create an Employee
 		String dateString = "1995-06-09";
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -27,9 +28,17 @@ public class EmployeeTestInteractive {
 		Employee e = new Employee(70, "OLEG", "KHARENKO", sqlDate, 42069f);
 		//dao.add(e);
 		
+		// Part #2 - Get all Employees using a Procedure
 		Employee[] allEmps = dao.getAllEmployees();
 		for (Employee employee : allEmps) {
 			System.out.println(employee + "\n");
 		}
+		
+		// Part #3 - Update an Employee
+		
+		
+		// Part  #4 - Delete an Employee
+		
+		
 	}
 }
